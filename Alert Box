@@ -1,0 +1,44 @@
+Alert Box Code 
+
+package com.example.alertbox;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+
+       showAlert(); // Call this method when you want to show the alert
+   }
+
+   private void showAlert() {
+       AlertDialog.Builder builder = new AlertDialog.Builder(this);
+       builder.setTitle("Alert Title");
+       builder.setMessage("This is an alert message.");
+
+       // Add Yes button
+       builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // Do something when user presses Yes
+           }
+       });
+
+       // Add No button
+       builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // Cancel the dialog
+               dialog.cancel();
+           }
+       });
+
+       // Show the AlertDialog
+       AlertDialog alert = builder.create();
+       alert.show();
+   }
+}
